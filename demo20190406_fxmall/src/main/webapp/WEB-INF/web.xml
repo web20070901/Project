@@ -1,0 +1,36 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <listener>
+    <listener-class>com.wangyulong.fxmall.commons.listener.TomcatInitListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>GoodsServlet</servlet-name>
+    <servlet-class>com.wangyulong.fxmall.goods.controller.GoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GoodsDetailServlet</servlet-name>
+    <servlet-class>com.wangyulong.fxmall.goods.controller.GoodsDetailServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddGoodsServlet</servlet-name>
+    <servlet-class>com.wangyulong.fxmall.goods.controller.AddGoodsServlet</servlet-class>
+  </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GoodsServlet</servlet-name>
+        <url-pattern>/goods.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GoodsDetailServlet</servlet-name>
+        <url-pattern>/goodsDetail.do</url-pattern>
+    </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddGoodsServlet</servlet-name>
+    <url-pattern>/addGoods.do</url-pattern>
+  </servlet-mapping>
+</web-app>
