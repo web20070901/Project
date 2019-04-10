@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangyulong.memeber.mapper.MemeberMapper">
+
+        <resultMap id="baseResultMap" type="com.wangyulong.memeber.po.WxbMemeber">
+            <id property="memeberId" column="memeber_id" javaType="java.lang.String"/>
+            <result property="account" column="account" javaType="java.lang.String"/>
+            <result property="qqNum" column="qq_num" javaType="java.lang.String"/>
+            <result property="email" column="email" javaType="java.lang.String"/>
+            <result property="phone" column="phone" javaType="java.lang.String"/>
+            <result property="recomUser" column="recom_user" javaType="java.lang.String"/>
+            <result property="registerTime" column="register_time" javaType="java.sql.Timestamp"/>
+            <result property="payAccount" column="pay_account" javaType="java.lang.String"/>
+            <result property="name" column="name" javaType="java.lang.String"/>
+            <result property="password" column="password" javaType="java.lang.String"/>
+            <result property="visitCode" column="visit_code" javaType="java.lang.String"/>
+            <result property="useRecom" column="use_recom" javaType="java.lang.Long"/>
+            <result property="levelCode" column="level_code" javaType="java.lang.String"/>
+            <result property="mid" column="mid" javaType="java.lang.Long"/>
+            <result property="updateTime" column="update_time" javaType="java.sql.Timestamp"/>
+        </resultMap>
+
+        <select id="checkUsername" resultMap="baseResultMap">
+            select memeber_id,name,password from wxb_memeber where name=#{username}
+        </select>
+</mapper>
