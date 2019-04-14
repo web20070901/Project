@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangyulong.goodsSku.mapper.GoodSkuMapper">
+    <!--查询所有套餐-->
+    <select id="queryAllSku" resultType="com.wangyulong.goodsSku.po.WxbGoodSku">
+          select * from wxb_good_sku
+    </select>
+    <!--增加套餐-->
+    <insert id="addSku">
+          insert into wxb_good_sku(
+              ku_id, sku_name, sku_cost, sku_price, sku_pmoney, good_id, order_no
+          ) values (
+              #{skuId},#{skuName},#{skuCost},#{skuPrice},#{skuPmoney},#{goodId},#{orderNo}
+          )
+    </insert>
+
+</mapper>

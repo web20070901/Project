@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangyulong.goods.mapper.GoodsMapper">
+    <resultMap id="baseMapper" type="com.wangyulong.goods.po.WxbGood">
+        <id property="goodId" column="good_id" javaType="java.lang.String"/>
+        <result property="goodName" column="good_name" javaType="java.lang.String"/>
+    </resultMap>
+
+    <!--sql标签用来定义SQL语句，或者是部分SQL语句-->
+    <sql id="params">
+        good_id,good_name,customer_id,good_pic,good_pic1,good_pic2,promote_desc,sku_title,sku_cost,
+     sku_price,sku_pmoney,copy_ids,copy_desc,forward_link,order_no,type_id,tags,state,create_time,
+     toped,recomed,toped_time,recomed_time,spc_id,zon_id,sell_num,website,iswxpay,isfdfk,leixing_id,kfqq
+    </sql>
+    <!--分页查询-->
+    <select id="queryGoodsByPage" resultMap="baseMapper">
+        select <include refid="params"/> from wxb_good limit #{index},#{size}
+    </select>
+    <!--通过id来查询-->
+    <select id="queryGoodsById" resultMap="com.wangyulong.goods.po.WxbGood">
+        select  <include refid="params"/> from wxb_good where good_id=#{goodId}
+    </select>
+    <!--查询所有-->
+    <select id="queryAllGoods" resultType="com.wangyulong.goods.po.WxbGood">
+        select <include refid="params"/> from wxb_good
+    </select>
+    <!--插入数据-->
+    <insert id="addGoods" keyProperty="goodId" keyColumn="good_id" useGeneratedKeys="true">
+        insert into wxb_good(
+        <include refid="params"/>
+        ) values (
+        #{goodId},#{goodName},#{customerId},#{goodPic},#{goodPic1},#{goodPic2},
+        #{promoteDesc},#{skuTitle},#{skuCost},#{skuPrice},#{skuPmoney},
+        #{copyIds},#{copyDesc},#{forwardLink},#{orderNo},#{typeId},
+        #{tags},#{state},#{createTime},#{toped},#{recomed},
+        #{topedTime},#{recomedTime},#{spcId},#{zonId},#{sellNum},
+        #{website},#{iswxpay},#{isfdfk},#{leixingId},#{kfqq}
+        )
+    </insert>
+</mapper>
